@@ -1,0 +1,42 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="android:Theme.Holo.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <!--主界面顶部按钮样式-->
+    <style name="main_activity_top_button">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/font_medium</item>
+        <item name="android:textColor">@color/font_blue</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_weight">0.2</item>
+    </style>
+
+    <!--item_car或item_send字体-->
+    <style name="font_item_xml_style">
+        <item name="android:minHeight">26dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:text">@null</item>
+        <item name="android:textSize">@dimen/font_small</item>
+        <item name="android:textColor">@color/font_blue</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:minWidth">6dp</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <style name="myProgressBarStyleLarge" >
+        　　<item name="android:indeterminateDrawable">@drawable/pb_bg</item>
+        　　<item name="android:minWidth">76dip</item>
+        　　<item name="android:maxWidth">76dip</item>
+        　　<item name="android:minHeight">76dip</item>
+        　　<item name="android:maxHeight">76dip</item>
+    </style>
+
+</resources>
