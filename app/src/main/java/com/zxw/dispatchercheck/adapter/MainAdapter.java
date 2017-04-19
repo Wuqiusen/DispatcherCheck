@@ -58,14 +58,14 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.LineHolder> {
         // 计划时刻
         holder.tvPlanTime.setText(DisplayTimeUtil.substring(mDatas.get(position).getVehTime()));
         // 发车间隔
-        holder.tvIntervalTime.setText(String.valueOf(mDatas.get(position).getSpaceTime()));
+//        holder.tvIntervalTime.setText(String.valueOf(mDatas.get(position).getSpaceTime()));
         // 到站时刻
         holder.tvSystemEnterTime.setText(DisplayTimeUtil.substring(mDatas.get(position).getArriveTime()));
         // 非营运任务
         holder.tvNoOperationTask.setText(noOperationStatus(mDatas.get(position).getUnRunTaskStatus()));
 
         // 发车
-        holder.tvIsDouble.setText(mDatas.get(position).getIsDouble() == 0 ?"单班":"双班");
+//        holder.tvIsDouble.setText(mDatas.get(position).getIsDouble() == 0 ?"单班":"双班");
         // 任务类型
         holder.tvWorkType.setText(mDatas.get(position).getTypeName());
 
@@ -95,10 +95,10 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.LineHolder> {
         TextView tvSystemEnterTime;
         @Bind(R.id.tv_plan_time)
         TextView tvPlanTime;
-        @Bind(R.id.tv_interval_time)
-        TextView tvIntervalTime;
-        @Bind(R.id.tv_is_double)
-        TextView tvIsDouble;
+//        @Bind(R.id.tv_interval_time)
+//        TextView tvIntervalTime;
+//        @Bind(R.id.tv_is_double)
+//        TextView tvIsDouble;
         @Bind(R.id.tv_driver)
         TextView tvDriver;
         @Bind(R.id.tv_trainman)

@@ -57,24 +57,24 @@
         <!--android:layout_height="wrap_content"-->
         <!--tools:text="7:00"-->
         <!--/>-->
-    <!--发车间隔-->
-    <TextView
-        android:id="@+id/tv_interval_time"
-        style="@style/font_item_xml_style"
-        android:layout_width="0dp"
-        android:layout_weight="3.8"
-        android:layout_height="wrap_content"
-        tools:text="15"
-        />
-    <!--单/双班-->
-    <TextView
-        android:id="@+id/tv_is_double"
-        style="@style/font_item_xml_style"
-        android:layout_width="0dp"
-        android:layout_weight="3.6"
-        android:layout_height="wrap_content"
-        tools:text="单班"
-        />
+    <!--&lt;!&ndash;发车间隔&ndash;&gt;-->
+    <!--<TextView-->
+        <!--android:id="@+id/tv_interval_time"-->
+        <!--style="@style/font_item_xml_style"-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_weight="3.8"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--tools:text="15"-->
+        <!--/>-->
+    <!--&lt;!&ndash;单/双班&ndash;&gt;-->
+    <!--<TextView-->
+        <!--android:id="@+id/tv_is_double"-->
+        <!--style="@style/font_item_xml_style"-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_weight="3.6"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--tools:text="单班"-->
+        <!--/>-->
     <!--驾驶员-->
     <TextView
         android:id="@+id/tv_driver"
@@ -94,29 +94,29 @@
         tools:text="李华"
         android:visibility="visible"/>
     <!--应跑单次-->
-    <TextView
-        style="@style/font_item_xml_style"
-        android:layout_width="0dp"
-        android:layout_weight="4"
-        android:layout_height="wrap_content"
-        tools:text="6"
-        />
-    <!--实跑单次-->
-    <TextView
-        style="@style/font_item_xml_style"
-        android:layout_width="0dp"
-        android:layout_weight="4.2"
-        android:layout_height="wrap_content"
-        tools:text="6"
-        />
-    <!--归属站-->
-    <TextView
-        style="@style/font_item_xml_style"
-        android:layout_width="0dp"
-        android:layout_weight="3.6"
-        android:layout_height="wrap_content"
-        tools:text="西乡客运站"
-        />
+    <!--<TextView-->
+        <!--style="@style/font_item_xml_style"-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_weight="4"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--tools:text="6"-->
+        <!--/>-->
+    <!--&lt;!&ndash;实跑单次&ndash;&gt;-->
+    <!--<TextView-->
+        <!--style="@style/font_item_xml_style"-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_weight="4.2"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--tools:text="6"-->
+        <!--/>-->
+    <!--&lt;!&ndash;归属站&ndash;&gt;-->
+    <!--<TextView-->
+        <!--style="@style/font_item_xml_style"-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_weight="3.6"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--tools:text="西乡客运站"-->
+        <!--/>-->
     <!--任务类型-->
     <TextView
         android:id="@+id/tv_work_type"
