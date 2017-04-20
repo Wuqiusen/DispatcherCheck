@@ -1,6 +1,7 @@
 package com.zxw.dispatchercheck.presenter;
 
 import android.content.Context;
+import android.text.TextUtils;
 
 import com.zxw.data.http.HttpMethods;
 import com.zxw.data.http.bean.DepartCar;
@@ -8,7 +9,9 @@ import com.zxw.data.http.bean.Line;
 import com.zxw.data.http.bean.LineParams;
 import com.zxw.dispatchercheck.adapter.MainAdapter;
 import com.zxw.dispatchercheck.presenter.view.MainView;
+import com.zxw.dispatchercheck.utils.DebugLog;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import rx.Subscriber;
@@ -19,27 +22,20 @@ import rx.Subscriber;
  */
 public class MainPresenter extends BasePresenter<MainView> {
     private Context mContext;
-    public final static int TYPE_SALE_AUTO = 1, TYPE_SALE_MANUAL = 2;
     private int lineId = 3;
-    private String lineName;
-    private LineParams mLineParams;
-    private Line mCurrentLine;
-    private List<Line> mLineBeen;
     private MainAdapter mainAdapter;
-    // 线路
-    private static final Integer TYPE_LINE = 1;
+    private List<String> mWaitVehicles = new ArrayList<>();
+    private List<String> mWaitVehiclesBefore = new ArrayList<>();
 
     public MainPresenter(Context context, MainView mvpView) {
         super(mvpView);
         this.mContext = context;
     }
 
-    public void loadSendCarList(){
-        mvpView.showLoading();
+    public void loadSendCarList() {
         HttpMethods.getInstance().getScheduleList(new Subscriber<List<DepartCar>>() {
             @Override
             public void onCompleted() {
-                mvpView.hideLoading();
             }
 
             @Override
@@ -49,11 +45,45 @@ public class MainPresenter extends BasePresenter<MainView> {
 
             @Override
             public void onNext(List<DepartCar> waitVehicles) {
-                mainAdapter = new MainAdapter(mContext, waitVehicles);
-                mvpView.loadSendCarList(mainAdapter);
+                DebugLog.e("加载-------");
+                if (mWaitVehiclesBefore.isEmpty()) {
+                    for (DepartCar departCar : waitVehicles) {
+                        mWaitVehiclesBefore.add(departCar.getCode());
+                    }
+                }
+                else {
+                    for (DepartCar departCar : waitVehicles) {
+                        mWaitVehicles.add(departCar.getCode());
+                    }
+                }
+                if (!checkList(mWaitVehiclesBefore, mWaitVehicles)){
+                    DebugLog.e("刷新-------");
+                    mainAdapter = new MainAdapter(mContext, waitVehicles);
+                    mvpView.loadSendCarList(mainAdapter);
+                }
+                if (mWaitVehicles != null && !mWaitVehicles.isEmpty()){
+                    mWaitVehiclesBefore.clear();
+                    mWaitVehiclesBefore.addAll(mWaitVehicles);
+                    mWaitVehicles.clear();
+                }
 
             }
         }, null, null, lineId);
+    }
+
+
+    private boolean checkList(List<String> list1, List<String> list2){
+        boolean isSame = true;
+        if (list1.size() == list2.size()){
+            for (int i = 0; i < list1.size(); i++){
+                if (!TextUtils.equals(list1.get(i), list2.get(i))){
+                    isSame = false;
+                }
+            }
+        }else {
+            isSame = false;
+        }
+        return isSame;
     }
 
 }

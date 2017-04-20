@@ -6,27 +6,6 @@
     android:background="@color/white"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <!--待发车辆图标布局-->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/background_gray5"
-        android:minHeight="40dp"
-        android:orientation="horizontal"
-        >
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left|center_vertical"
-            android:layout_marginLeft="@dimen/margin_fit_6"
-            android:drawablePadding="2dp"
-            android:paddingLeft="@dimen/margin_tiny"
-            android:text="待发车辆"
-            android:textColor="@color/font_blue3"
-            android:textSize="@dimen/font_large"
-            android:textStyle="bold" />
-
-    </LinearLayout>
 
     <!--标题栏-->
     <LinearLayout
@@ -46,10 +25,10 @@
             android:layout_weight="5.4"
             android:text="车号" />
 
-        <TextView
-            style="@style/main_activity_top_button"
-            android:layout_weight="4"
-            android:text="到站时刻" />
+        <!--<TextView-->
+            <!--style="@style/main_activity_top_button"-->
+            <!--android:layout_weight="4"-->
+            <!--android:text="到站时刻" />-->
 
         <TextView
             style="@style/main_activity_top_button"
@@ -81,7 +60,7 @@
             style="@style/main_activity_top_button"
             android:layout_weight="3"
             android:text="乘务员"
-            android:visibility="visible" />
+            android:visibility="gone" />
 
         <!--&lt;!&ndash;应跑单次&ndash;&gt;-->
         <!--<TextView-->
@@ -129,14 +108,14 @@
         >
 
     </android.support.v7.widget.RecyclerView>
-    <Button
-        android:id="@+id/btn_refresh"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="@dimen/margin_fit"
-        android:gravity="center"
-        android:textSize="20dp"
-        android:text="刷新"
-        />
+    <!--<Button-->
+        <!--android:id="@+id/btn_refresh"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:padding="@dimen/margin_fit"-->
+        <!--android:gravity="center"-->
+        <!--android:textSize="20dp"-->
+        <!--android:text="刷新"-->
+        <!--/>-->
 
 </LinearLayout>

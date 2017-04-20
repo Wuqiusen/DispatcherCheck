@@ -53,14 +53,14 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.LineHolder> {
         holder.tvDriver.setText(mDatas.get(position).getDriverName());
 
         // 乘务员
-        holder.tvTrainman.setVisibility(View.INVISIBLE);
+        holder.tvTrainman.setVisibility(View.GONE);
 
         // 计划时刻
         holder.tvPlanTime.setText(DisplayTimeUtil.substring(mDatas.get(position).getVehTime()));
         // 发车间隔
 //        holder.tvIntervalTime.setText(String.valueOf(mDatas.get(position).getSpaceTime()));
         // 到站时刻
-        holder.tvSystemEnterTime.setText(DisplayTimeUtil.substring(mDatas.get(position).getArriveTime()));
+//        holder.tvSystemEnterTime.setText(DisplayTimeUtil.substring(mDatas.get(position).getArriveTime()));
         // 非营运任务
         holder.tvNoOperationTask.setText(noOperationStatus(mDatas.get(position).getUnRunTaskStatus()));
 
@@ -91,8 +91,8 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.LineHolder> {
         TextView tvCarSequence;
         @Bind(R.id.tv_car_code)
         TextView tvCarCode;
-        @Bind(R.id.tv_system_enter_time)
-        TextView tvSystemEnterTime;
+//        @Bind(R.id.tv_system_enter_time)
+//        TextView tvSystemEnterTime;
         @Bind(R.id.tv_plan_time)
         TextView tvPlanTime;
 //        @Bind(R.id.tv_interval_time)

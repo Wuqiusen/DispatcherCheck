@@ -32,14 +32,14 @@
             tools:text="粤B12345"
             />
     <!--到站时刻-->
-    <TextView
-        android:id="@+id/tv_system_enter_time"
-        style="@style/font_item_xml_style"
-        android:layout_width="0dp"
-        android:layout_weight="4"
-        android:layout_height="wrap_content"
-        tools:text="7:00"
-        />
+    <!--<TextView-->
+        <!--android:id="@+id/tv_system_enter_time"-->
+        <!--style="@style/font_item_xml_style"-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_weight="4"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--tools:text="7:00"-->
+        <!--/>-->
     <!--计划时刻-->
     <TextView
         android:id="@+id/tv_plan_time"
@@ -92,7 +92,7 @@
         android:layout_weight="3"
         android:layout_height="wrap_content"
         tools:text="李华"
-        android:visibility="visible"/>
+        android:visibility="gone"/>
     <!--应跑单次-->
     <!--<TextView-->
         <!--style="@style/font_item_xml_style"-->
