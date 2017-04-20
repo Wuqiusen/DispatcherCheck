@@ -73,6 +73,7 @@
     <dimen name="font_xlarge">20sp</dimen>
     <dimen name="font_huge">22sp</dimen>
     <dimen name="font_xhuge">28sp</dimen>
+    <dimen name="font_xxhuge">46sp</dimen>
     <dimen name="head_height">50dp</dimen>
 
     <!-- radian -->

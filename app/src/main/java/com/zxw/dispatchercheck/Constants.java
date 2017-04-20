@@ -6,11 +6,13 @@ package com.zxw.dispatchercheck;
  */
 public class Constants {
     public static boolean DEBUG_LOG = true;
+    public static int PAGE_SIZE = 6;
 
     public class Path{
         public static final String ERRORPATH = "DispatcherCheck/error";
         public static final String SECONDPATH = "DispatcherCheck/download";
         public static final String APKNAME = "DispatcherCheck.apk";
     }
+
 
 }

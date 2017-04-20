@@ -69,7 +69,9 @@ public class HttpInterfaces {
         @POST("phone/control/manage/task/line/schedule/list/all")
         Observable<BaseBean<List<DepartCar>>> getScheduleList(@Field("userId") String userId,
                                                               @Field("keyCode") String keyCode,
-                                                              @Field("lineId") int lineId);
+                                                              @Field("lineId") int lineId,
+                                                              @Field("pageNo") int pageNo,
+                                                              @Field("pageSize") int pageSize);
 
 
     }

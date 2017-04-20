@@ -156,6 +156,7 @@ public abstract class BaseHeadActivity extends BaseActivity {
     private void assignViews() {
         rel_contentArea = (RelativeLayout) findViewById(R.id.rel_base_contentArea);
         mLoading = (RelativeLayout) findViewById(R.id.rel_base_loading);
+        rel_base_headArea = (LinearLayout) findViewById(R.id.rl_base_headArea);
 
     }
 

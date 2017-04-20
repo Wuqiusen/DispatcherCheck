@@ -1,8 +1,10 @@
 package com.zxw.dispatchercheck.adapter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +13,7 @@ import android.widget.TextView;
 
 import com.zxw.data.http.bean.DepartCar;
 import com.zxw.data.http.bean.LineParams;
+import com.zxw.dispatchercheck.Constants;
 import com.zxw.dispatchercheck.R;
 import com.zxw.dispatchercheck.presenter.MainPresenter;
 import com.zxw.dispatchercheck.utils.DisplayTimeUtil;
@@ -25,6 +28,8 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.LineHolder> {
     private Context mContext;
     private List<DepartCar> mDatas;
     private final LayoutInflater mLayoutInflater;
+    private ViewGroup.LayoutParams lp;
+    private DisplayMetrics dm = new DisplayMetrics();
 
     public MainAdapter(Context mContext, List<DepartCar> waitVehicles) {
         this.mContext = mContext;
@@ -40,14 +45,20 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.LineHolder> {
 
     @Override
     public void onBindViewHolder(final LineHolder holder, final int position) {
+//取得窗口属性
+        ((Activity)mContext).getWindowManager().getDefaultDisplay().getMetrics(dm);
+        lp= holder.ll_item.getLayoutParams();
+        lp.width= dm.widthPixels;
+        lp.height= dm.heightPixels/(Constants.PAGE_SIZE + 1);
+        holder.ll_item.setLayoutParams(lp);
         holder.tvCarSequence.setText((position + 1) + "");
 
         holder.tvCarCode.setText(mDatas.get(position).getCode());
-        if (mDatas.get(position).getTaskEditBelongId() == mDatas.get(position).getTaskEditRunId()){
-            holder.tvCarCode.setBackground(mContext.getResources().getDrawable(R.drawable.ll_stop_car_red_btn_bg));
-        }else {
-            holder.tvCarCode.setBackground(mContext.getResources().getDrawable(R.drawable.ll_stop_car_green_btn_bg));
-        }
+//        if (mDatas.get(position).getTaskEditBelongId() == mDatas.get(position).getTaskEditRunId()){
+//            holder.tvCarCode.setBackground(mContext.getResources().getDrawable(R.drawable.ll_stop_car_red_btn_bg));
+//        }else {
+//            holder.tvCarCode.setBackground(mContext.getResources().getDrawable(R.drawable.ll_stop_car_green_btn_bg));
+//        }
 
         // 驾驶员
         holder.tvDriver.setText(mDatas.get(position).getDriverName());
@@ -62,7 +73,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.LineHolder> {
         // 到站时刻
 //        holder.tvSystemEnterTime.setText(DisplayTimeUtil.substring(mDatas.get(position).getArriveTime()));
         // 非营运任务
-        holder.tvNoOperationTask.setText(noOperationStatus(mDatas.get(position).getUnRunTaskStatus()));
+//        holder.tvNoOperationTask.setText(noOperationStatus(mDatas.get(position).getUnRunTaskStatus()));
 
         // 发车
 //        holder.tvIsDouble.setText(mDatas.get(position).getIsDouble() == 0 ?"单班":"双班");
@@ -105,8 +116,10 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.LineHolder> {
         TextView tvTrainman;
         @Bind(R.id.tv_work_type)
         TextView tvWorkType;
-        @Bind(R.id.tv_no_operation_task)
-        TextView tvNoOperationTask;
+//        @Bind(R.id.tv_no_operation_task)
+//        TextView tvNoOperationTask;
+        @Bind(R.id.ll_item)
+        LinearLayout ll_item;
         LineHolder(View view) {
             super(view);
             ButterKnife.bind(this, view);

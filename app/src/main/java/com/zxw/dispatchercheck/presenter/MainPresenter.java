@@ -7,6 +7,7 @@ import com.zxw.data.http.HttpMethods;
 import com.zxw.data.http.bean.DepartCar;
 import com.zxw.data.http.bean.Line;
 import com.zxw.data.http.bean.LineParams;
+import com.zxw.dispatchercheck.Constants;
 import com.zxw.dispatchercheck.adapter.MainAdapter;
 import com.zxw.dispatchercheck.presenter.view.MainView;
 import com.zxw.dispatchercheck.utils.DebugLog;
@@ -24,8 +25,7 @@ public class MainPresenter extends BasePresenter<MainView> {
     private Context mContext;
     private int lineId = 3;
     private MainAdapter mainAdapter;
-    private List<String> mWaitVehicles = new ArrayList<>();
-    private List<String> mWaitVehiclesBefore = new ArrayList<>();
+    private int pageNo = 1;
 
     public MainPresenter(Context context, MainView mvpView) {
         super(mvpView);
@@ -46,44 +46,21 @@ public class MainPresenter extends BasePresenter<MainView> {
             @Override
             public void onNext(List<DepartCar> waitVehicles) {
                 DebugLog.e("加载-------");
-                if (mWaitVehiclesBefore.isEmpty()) {
-                    for (DepartCar departCar : waitVehicles) {
-                        mWaitVehiclesBefore.add(departCar.getCode());
-                    }
-                }
-                else {
-                    for (DepartCar departCar : waitVehicles) {
-                        mWaitVehicles.add(departCar.getCode());
-                    }
-                }
-                if (!checkList(mWaitVehiclesBefore, mWaitVehicles)){
-                    DebugLog.e("刷新-------");
+                if(waitVehicles != null && !waitVehicles.isEmpty()){
                     mainAdapter = new MainAdapter(mContext, waitVehicles);
                     mvpView.loadSendCarList(mainAdapter);
                 }
-                if (mWaitVehicles != null && !mWaitVehicles.isEmpty()){
-                    mWaitVehiclesBefore.clear();
-                    mWaitVehiclesBefore.addAll(mWaitVehicles);
-                    mWaitVehicles.clear();
-                }
+                    if (waitVehicles.size() == Constants.PAGE_SIZE){
+                        pageNo ++;
+                    }else {
+                        pageNo = 1;
+                    }
+
 
             }
-        }, null, null, lineId);
+        }, null, null, lineId, pageNo, Constants.PAGE_SIZE);
     }
 
 
-    private boolean checkList(List<String> list1, List<String> list2){
-        boolean isSame = true;
-        if (list1.size() == list2.size()){
-            for (int i = 0; i < list1.size(); i++){
-                if (!TextUtils.equals(list1.get(i), list2.get(i))){
-                    isSame = false;
-                }
-            }
-        }else {
-            isSame = false;
-        }
-        return isSame;
-    }
 
 }

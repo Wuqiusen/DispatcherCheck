@@ -67,9 +67,9 @@ public class HttpMethods {
         toSubscribe(map, subscriber);
     }
 
-    public void getScheduleList(Subscriber<List<DepartCar>> subscriber, String userId, String keyCode, int lineId){
+    public void getScheduleList(Subscriber<List<DepartCar>> subscriber, String userId, String keyCode, int lineId, int pageNo, int pageSize){
         HttpInterfaces.Browse browse = retrofit.create(HttpInterfaces.Browse.class);
-        Observable<List<DepartCar>> map = browse.getScheduleList(userId, keyCode, lineId).map(new HttpResultFunc<List<DepartCar>>());
+        Observable<List<DepartCar>> map = browse.getScheduleList(userId, keyCode, lineId, pageNo, pageSize).map(new HttpResultFunc<List<DepartCar>>());
         toSubscribe(map, subscriber);
     }
 

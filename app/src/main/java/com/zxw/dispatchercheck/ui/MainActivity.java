@@ -34,13 +34,13 @@ public class MainActivity extends PresenterActivity<MainPresenter> implements Ma
     private Timer timer = new Timer();
     private TimerTask timerTask;
     private final int LOAD_DATA = 1;
+    private int listHeight;
     private Handler handler =  new Handler(Looper.getMainLooper()) {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
                 switch (msg.what) {
                     case LOAD_DATA:
-
                         presenter.loadSendCarList();
                         break;
                 }
@@ -54,9 +54,11 @@ public class MainActivity extends PresenterActivity<MainPresenter> implements Ma
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_car);
         ButterKnife.bind(this);
+        hideHeadArea();
         rvPlanList.setLayoutManager(new LinearLayoutManager(this));
         rvPlanList.addItemDecoration(new DividerItemDecoration(this,
                 DividerItemDecoration.VERTICAL_LIST));
+        listHeight = rvPlanList.getHeight();
         showLoading();
         timerTask = new TimerTask() {
             @Override
